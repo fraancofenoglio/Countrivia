@@ -49,4 +49,4 @@ export const ArgentinaTrivia = [
         answers: ["Dólar Estadounidense", "Euro", "Peso argentino", "Yen"],
         correct: "Peso argentino"
     }
-]
+];
