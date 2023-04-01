@@ -5,9 +5,9 @@ import Header from './components/Header';
 
 function App() {
 
-  const [questionIndex, setQuestionIndex] = useState(0);
-  const [checkAnswer, setCheckAnswer] = useState("")
-  console.log(questionIndex)
+  const [indiceRes, setIndiceRes] = useState(0);
+  const [checkRespuesta, setCheckRespuesta] = useState("");
+  const [correctas, setCorrectas] = useState(0);
   
   return (
     <>
@@ -20,12 +20,43 @@ function App() {
         </select>
       </div>
 
-      <>  
+      <div >
+        {
+          indiceRes >= 10 ? <h2>Respuestas correctas: {correctas}</h2> : <>
+              <h2 className='pregunta'>{ArgentinaTrivia[indiceRes].question}</h2>
+              <div>{
+
+                ArgentinaTrivia[indiceRes].answers.map((ans, i) => (
+                  <div className='respuestas' key={i}>
+                    <button className='btn-respuesta' disabled={checkRespuesta === "" ? false : true} onClick={() => {
+                      if(ans === ArgentinaTrivia[indiceRes].correct){
+                        setCheckRespuesta("¡Correcto!")
+                        setCorrectas(correctas+1)
+                      } else {
+                        setCheckRespuesta("¡Incorrecto!")
+                      }
+                    }}>{ans}</button>
+                  </div>
+                ))
+              }</div>
+              {checkRespuesta}
+              <button className='btn-continuar' onClick={() => {
+                setIndiceRes(indiceRes+1);
+                setCheckRespuesta("")
+              }}>Continuar</button>
+
+          </>
+        }
+      </div>
+
+
+      {/* <>  
         {
           <h2 className='pregunta'>{questionIndex+1 + ". " + ArgentinaTrivia[questionIndex].question}</h2>
         }
           <div className='respuestas'>
             {ArgentinaTrivia[questionIndex].answers.map((ans, i) => (
+              
               <button className='btn-respuesta' disabled={checkAnswer === "" ? false : true} onClick={() => {
                 
                 if(ans === ArgentinaTrivia[questionIndex].correct){
@@ -33,8 +64,7 @@ function App() {
                 } else {
                   setCheckAnswer("¡Incorrecto!")
                 }
-                // setCheckAnswer("")
-                // setQuestionIndex(questionIndex+1)
+  
               }} key={i}>{ans}</button>
             ))}
             <h3>
@@ -43,11 +73,16 @@ function App() {
             {
               checkAnswer !== "" ? <button className='btn-continuar' onClick={() => {
                 setCheckAnswer("");
+                if (questionIndex === 9) {
+                  setMessage("Listo!")
+                }
                 setQuestionIndex(questionIndex+1);
               }}>Continuar</button> : ""
             }
           </div>
-      </>
+
+          <h4>{message}</h4>
+      </> */}
 
 
     </>
