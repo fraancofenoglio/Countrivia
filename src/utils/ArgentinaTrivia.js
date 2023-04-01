@@ -1,4 +1,4 @@
-export const ArgentinaTrivia = [
+const ArgentinaTrivia = [
     {
         question: "¿Cuál es la capital de Argentina?",
         answers: ["Córdoba", "Mendoza", "Buenos Aires", "Rosario"],
@@ -50,3 +50,5 @@ export const ArgentinaTrivia = [
         correct: "Peso argentino"
     }
 ];
+
+export default ArgentinaTrivia;
