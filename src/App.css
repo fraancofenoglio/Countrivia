@@ -51,7 +51,7 @@ body{
     flex-direction: column;
     justify-content: center;
     gap: 4rem;
-    width: 40%;
+    width: 50%;
     margin: 5rem auto;
 }
 .respuestas h3{
@@ -59,6 +59,8 @@ body{
     font-size: 2rem;
 }
 .btn-respuesta{
+    width: 50%;
+    margin: 0 auto 1rem auto;
     background-color: #005607;
 }
 .btn-respuesta:hover{
@@ -71,6 +73,7 @@ body{
     border: none;
     border-radius: .5rem;
     padding: 1rem 3rem;
+    font-weight: 700;
     font-size: 2rem;
     cursor: pointer;
 }
