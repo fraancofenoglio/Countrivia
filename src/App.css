@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+body{
+    background-color: #202020;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+}
+.titulo{
+    padding: 2rem;
+    text-align: center;
+    font-size: 3.8rem;
+}
+.elegir{
+    margin: 0 auto;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.elegir label,select{
+    font-size: 2rem;
+    padding: 1rem 3rem;
+    width: 80%;
+    text-align: center;
+}
+.elegir select, option{
+    cursor: pointer;
+}
+.elegir option{
+    font-size: 2rem;
+    text-align: center;
+    padding: 1rem 3rem;
+}
+.pregunta{
+    font-size: 2rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+.respuestas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4rem;
+    width: 40%;
+    margin: 5rem auto;
+}
+.respuestas h3{
+    text-align: center;
+    font-size: 2rem;
+}
+.btn-respuesta{
+    background-color: #005607;
+}
+.btn-respuesta:hover{
+    background-color: #00cb11;
+}
+.btn-continuar{
+    background-color: darkcyan;
+}
+.btn-respuesta, .btn-continuar{
+    border: none;
+    border-radius: .5rem;
+    padding: 1rem 3rem;
+    font-size: 2rem;
+    cursor: pointer;
+}

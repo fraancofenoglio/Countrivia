@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import ArgentinaTrivia from './utils/ArgentinaTrivia.js'
+import ArgentinaTrivia from './utils/ArgentinaTrivia.js';
+import Header from './components/Header';
 
 function App() {
 
@@ -10,7 +11,8 @@ function App() {
   
   return (
     <>
-      <div>
+      <Header/>
+      <div className='elegir'>
         <label htmlFor="Seleccione país">¡Elegí el país!</label>
         <select name="Seleccione país" id="">
           <option value="ARG">Argentina</option>
@@ -20,11 +22,11 @@ function App() {
 
       <>  
         {
-          <h2>{questionIndex+1 + ". " + ArgentinaTrivia[questionIndex].question}</h2>
+          <h2 className='pregunta'>{questionIndex+1 + ". " + ArgentinaTrivia[questionIndex].question}</h2>
         }
-          <div>
+          <div className='respuestas'>
             {ArgentinaTrivia[questionIndex].answers.map((ans, i) => (
-              <button disabled={checkAnswer === "" ? false : true} onClick={() => {
+              <button className='btn-respuesta' disabled={checkAnswer === "" ? false : true} onClick={() => {
                 
                 if(ans === ArgentinaTrivia[questionIndex].correct){
                   setCheckAnswer("¡Correcto!")
@@ -39,7 +41,7 @@ function App() {
                {checkAnswer}
             </h3>
             {
-              checkAnswer !== "" ? <button onClick={() => {
+              checkAnswer !== "" ? <button className='btn-continuar' onClick={() => {
                 setCheckAnswer("");
                 setQuestionIndex(questionIndex+1);
               }}>Continuar</button> : ""
