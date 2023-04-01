@@ -5,6 +5,7 @@ import ArgentinaTrivia from './utils/ArgentinaTrivia.js'
 function App() {
 
   const [questionIndex, setQuestionIndex] = useState(0);
+  const [checkAnswer, setCheckAnswer] = useState("")
   console.log(questionIndex)
   
   return (
@@ -23,10 +24,26 @@ function App() {
         }
           <div>
             {ArgentinaTrivia[questionIndex].answers.map((ans, i) => (
-              <button onClick={() => {
-                setQuestionIndex(questionIndex+1)
+              <button disabled={checkAnswer === "" ? false : true} onClick={() => {
+                
+                if(ans === ArgentinaTrivia[questionIndex].correct){
+                  setCheckAnswer("¡Correcto!")
+                } else {
+                  setCheckAnswer("¡Incorrecto!")
+                }
+                // setCheckAnswer("")
+                // setQuestionIndex(questionIndex+1)
               }} key={i}>{ans}</button>
             ))}
+            <h3>
+               {checkAnswer}
+            </h3>
+            {
+              checkAnswer !== "" ? <button onClick={() => {
+                setCheckAnswer("");
+                setQuestionIndex(questionIndex+1);
+              }}>Continuar</button> : ""
+            }
           </div>
       </>
 
