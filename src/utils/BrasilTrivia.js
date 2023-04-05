@@ -1,4 +1,4 @@
-export const BrasilTrivia = [
+const BrasilTrivia = [
     {
         question: "¿En qué continente se encuentra Brasil?",
         answers: [ "Europa", "Asia", "Oceanía", "América"],
@@ -50,3 +50,5 @@ export const BrasilTrivia = [
         correct: "Copacabana Beach"
     }
 ];
+
+export default BrasilTrivia;
