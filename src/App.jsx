@@ -20,7 +20,7 @@ function App() {
           setPais(JSON.parse(e.target.value))
           console.log(e.target.value)
         }}>
-          <option>-</option>
+          <option disabled>-- Seleccione --</option>
           <option value={JSON.stringify(ArgentinaTrivia)}>Argentina</option>
           <option value={JSON.stringify(BrasilTrivia)}>Brasil</option>
         </select>

@@ -1,23 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
 
+:root{
+    --colorFondo : #484848;
+    --colorPrincipal : #006465;
+    --colorSecundario : #0f928c;
+    --colorResaltar : #00c9d2;
+    --blanco : white;
+    --negro : black;
+}
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     /* font-size: 62.5%; */
 }
-body{
+html{
     background-color: #202020;
-    width: 100vw;
-    height: 100vh;
+}
+body{
+    padding: 2rem;
     color: white;
     font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
+    font-size: 1.2rem;
 }
 .titulo{
+    background-color: var(--colorPrincipal);
     padding: 2rem;
     text-align: center;
-    font-size: 3.8rem;
+    font-size: 2.6rem;
 }
 .elegir{
     margin: 0 auto;
@@ -28,8 +38,8 @@ body{
     align-items: center;
 }
 .elegir label,select{
-    font-size: 2rem;
-    padding: 1rem 3rem;
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
     width: 80%;
     text-align: center;
 }
@@ -37,12 +47,12 @@ body{
     cursor: pointer;
 }
 .elegir option{
-    font-size: 2rem;
+    font-size: 1.6rem;
     text-align: center;
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
 }
 .pregunta{
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-top: 2rem;
     text-align: center;
 }
@@ -52,28 +62,63 @@ body{
     justify-content: center;
     gap: 4rem;
     width: 50%;
-    margin: 5rem auto;
+    margin: 2rem auto;
 }
 .respuestas h3{
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 .btn-respuesta{
     width: 50%;
     margin: 0 auto 1rem auto;
-    background-color: #005607;
+    background-color: #06888f;
 }
 .btn-respuesta:hover{
-    background-color: #00cb11;
+    background-color: var(--colorResaltar);
+
+    color: var(--negro);
+}
+.continuar-flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.correcto{
+    font-weight: 700;
+    text-align: center;
+    width: 20rem;
+    padding: 1rem 2rem;
+    background-color: green;
+    border-radius: .5rem;
+}
+.falso{
+    text-align: center;
+    width: 20rem;
+    padding: 1rem 2rem;
+    background-color: red;
+    border-radius: .5rem;
+    font-weight: 700;
 }
 .btn-continuar{
-    background-color: darkcyan;
+    margin-top: 2rem;
+    width: 100%;
+    background-color: var(--colorSecundario);
+}
+.btn-continuar:hover{
+    background-color: #006465;
 }
 .btn-respuesta, .btn-continuar{
+    width: 100%;
     border: none;
     border-radius: .5rem;
     padding: 1rem 3rem;
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 1.8rem;
     cursor: pointer;
+}
+@media (min-width: 600px) {
+    .btn-respuesta, .btn-continuar{
+        width: 50%;
+    }
 }
