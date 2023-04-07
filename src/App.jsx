@@ -1,32 +1,25 @@
 import { useState } from 'react'
 import './App.css'
-import ArgentinaTrivia from './utils/ArgentinaTrivia.js';
-import BrasilTrivia from './utils/BrasilTrivia.js'
+
 import Header from './components/Header';
 import Preguntas from './components/Preguntas';
+import SeleccionPais from './components/SeleccionPais';
 
 function App() {
 
-  const [pais, setPais] = useState(ArgentinaTrivia);
-  console.log("preguntas: ", pais)
-  console.log(ArgentinaTrivia)
+  const [pais, setPais] = useState();
+  const [iniciar, setIniciar] = useState(false)
 
   return (
     <>
       <Header/>
-      <div className='elegir'>
-        <label htmlFor="Seleccione país">¡Elegí el país!</label>
-        <select name="Seleccione país" id="" onChange={(e) => {
-          setPais(JSON.parse(e.target.value))
-          console.log(e.target.value)
-        }}>
-          <option disabled>-- Seleccione --</option>
-          <option value={JSON.stringify(ArgentinaTrivia)}>Argentina</option>
-          <option value={JSON.stringify(BrasilTrivia)}>Brasil</option>
-        </select>
-      </div>
 
-      <Preguntas pais={pais}/>
+    { !iniciar ?
+      <SeleccionPais setPais={setPais} setIniciar={setIniciar}/>
+      :
+      <Preguntas pais={pais} setIniciar={setIniciar}/>
+    }
+
 
 
       {/* <>  

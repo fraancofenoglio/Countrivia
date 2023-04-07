@@ -1,14 +1,11 @@
 import { useState } from "react";
 
-const Preguntas = ({pais}) => {
+const Preguntas = ({pais, setIniciar}) => {
 
     const [indiceRes, setIndiceRes] = useState(0);
     const [checkRespuesta, setCheckRespuesta] = useState("");
     const [correctas, setCorrectas] = useState(0);
-    const [bandera, setBandera] = useState(true);
-    console.log(pais)
-
-    
+    const [indiceSeleccionado, setIndiceSeleccionado] = useState();
 
     if (!pais) {
         return <h2>Elegi un país para comenzar</h2>
@@ -17,33 +14,41 @@ const Preguntas = ({pais}) => {
   return (
     <div>
         {
-          indiceRes >= 10 ? <h2>Respuestas correctas: {correctas}</h2> : <>
-              <h2 className='pregunta'>{pais[indiceRes].question}</h2>
+          indiceRes >= 10 ?
+           <>
+            <h2>Respuestas correctas: {correctas}</h2>
+            <button onClick={() => setIniciar(false)}>Volver</button>
+          </>
+           : 
+           <>
+              <h2 className='pregunta'>{indiceRes+1}- {pais[indiceRes].question}`</h2>
               <div>{
 
                 pais[indiceRes].answers.map((ans, i) => (
                   <div className='respuestas' key={i}>
-                    <button className='btn-respuesta' disabled={checkRespuesta === "" ? false : true} onClick={() => {
+                    <button style={indiceSeleccionado === i ? {border:"3px solid #fff"}:{border: ""}} className='btn-respuesta' disabled={checkRespuesta === "" ? false : true} onClick={() => {
+                      setIndiceSeleccionado(i)
                       if(ans === pais[indiceRes].correct){
                         setCheckRespuesta("¡Correcto!")
-                        setBandera(true);
                         setCorrectas(correctas+1)
                       } else {
                         setCheckRespuesta("¡Incorrecto!")
-                        setBandera(false)
                       }
                     }}>{ans}</button>
                   </div>
                 ))
               }</div>
               <div className="continuar-flex">
-                <p className={checkRespuesta === "" ? "" : bandera ? 'correcto' : 'falso'}>{checkRespuesta}</p>
+                <p className={checkRespuesta === "" ? "" : checkRespuesta === "¡Correcto!" ? 'correcto' : 'falso'}>{checkRespuesta}</p>
                 <button className='btn-continuar' onClick={() => {
-                  setIndiceRes(indiceRes+1);
-                  setCheckRespuesta("")
+                  if (checkRespuesta !== "") {
+                    
+                    setIndiceRes(indiceRes+1);
+                    setCheckRespuesta("")
+                    setIndiceSeleccionado(null)
+                  }
                 }}>Continuar</button>
               </div>
-
 
           </>
         }
