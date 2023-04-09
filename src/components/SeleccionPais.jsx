@@ -1,7 +1,12 @@
 import ArgentinaTrivia from '../utils/ArgentinaTrivia.js';
 import BrasilTrivia from '../utils/BrasilTrivia.js';
+import { useContext } from 'react';
+import {AppContext} from '../context/AppContext.jsx'
 
-const SeleccionPais = ({setIniciar, setPais}) => {
+const SeleccionPais = () => {
+
+  const {setIniciar, setPais, pais} = useContext(AppContext)
+
   return (
     <>
      <div className='elegir'>
@@ -17,7 +22,7 @@ const SeleccionPais = ({setIniciar, setPais}) => {
       
      {/* agrego boton y estado porque al seleccionar un pais me sigue mostrando el
       select entonces puede cambiar de pais y adelantarse preguntas */}
-     <button className='btn-continuar' onClick={() => setIniciar(true)}>Comenzar</button>
+     <button className='btn-continuar' onClick={() => pais ? setIniciar(true) : setIniciar(false)}>Comenzar</button>
     </>
   )
 }

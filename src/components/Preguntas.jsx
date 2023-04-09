@@ -1,11 +1,32 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import {AppContext} from '../context/AppContext.jsx'
 
-const Preguntas = ({pais, setIniciar}) => {
 
+const Preguntas = () => {
+
+    const {setIniciar, pais} = useContext(AppContext);
     const [indiceRes, setIndiceRes] = useState(0);
     const [checkRespuesta, setCheckRespuesta] = useState("");
     const [correctas, setCorrectas] = useState(0);
     const [indiceSeleccionado, setIndiceSeleccionado] = useState();
+    const [intervalo, setIntervalo] = useState(10);
+
+    useEffect(() => {
+
+      if (indiceSeleccionado) {
+        return
+      }
+      setTimeout(() => {
+        if (intervalo === 0) {
+          setCheckRespuesta("¡Sin tiempo!")
+          return
+        }
+        setIntervalo(intervalo-1)
+      }, 1000);
+
+    }, [intervalo])
+    
+
 
     if (!pais) {
         return <h2>Elegi un país para comenzar</h2>
@@ -13,6 +34,7 @@ const Preguntas = ({pais, setIniciar}) => {
 
   return (
     <div>
+      <h1>{intervalo}</h1>
         {
           indiceRes >= 10 ?
            <>
@@ -21,7 +43,7 @@ const Preguntas = ({pais, setIniciar}) => {
           </>
            : 
            <>
-              <h2 className='pregunta'>{indiceRes+1}- {pais[indiceRes].question}`</h2>
+              <h2 className='pregunta'>{indiceRes+1}- {pais[indiceRes].question}</h2>
               <div>{
 
                 pais[indiceRes].answers.map((ans, i) => (
@@ -46,6 +68,7 @@ const Preguntas = ({pais, setIniciar}) => {
                     setIndiceRes(indiceRes+1);
                     setCheckRespuesta("")
                     setIndiceSeleccionado(null)
+                    setIntervalo(10)
                   }
                 }}>Continuar</button>
               </div>

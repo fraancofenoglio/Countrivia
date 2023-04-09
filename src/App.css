@@ -110,7 +110,7 @@ body{
 }
 .btn-respuesta, .btn-continuar{
     width: 100%;
-    border: none ;
+    border: none;
     border-radius: .5rem;
     padding: 1rem 3rem;
     font-weight: 700;
