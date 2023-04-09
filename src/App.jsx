@@ -8,8 +8,7 @@ import SeleccionPais from './components/SeleccionPais';
 function App() {
 
   const context = useContext(AppContext);
-  const {iniciar, setIniciar, pais, setPais} = context
-  console.log(iniciar)
+  const {iniciar} = context
 
   return (
     <>
@@ -19,7 +18,7 @@ function App() {
     { !iniciar ?
       <SeleccionPais/>
       :
-      <Preguntas pais={pais} setIniciar={setIniciar}/>
+      <Preguntas/>
     }
     </>
 

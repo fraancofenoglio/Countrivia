@@ -9,22 +9,27 @@ const Preguntas = () => {
     const [checkRespuesta, setCheckRespuesta] = useState("");
     const [correctas, setCorrectas] = useState(0);
     const [indiceSeleccionado, setIndiceSeleccionado] = useState();
-    const [intervalo, setIntervalo] = useState(10);
+    const [timer, setTimer] = useState(10);
+
 
     useEffect(() => {
-
-      if (indiceSeleccionado) {
-        return
-      }
-      setTimeout(() => {
-        if (intervalo === 0) {
-          setCheckRespuesta("¡Sin tiempo!")
-          return
-        }
-        setIntervalo(intervalo-1)
+      
+      const interval = setInterval(() => {
+        setTimer(timer-1)
       }, 1000);
 
-    }, [intervalo])
+      if (indiceSeleccionado) {
+        clearInterval(interval);
+        return
+      }
+      if (timer === 0) {
+        clearInterval(interval);
+        setCheckRespuesta("¡Sin tiempo!");
+      }
+
+      return () => clearInterval(interval)
+
+    }, [timer, indiceSeleccionado])
     
 
 
@@ -34,7 +39,7 @@ const Preguntas = () => {
 
   return (
     <div>
-      <h1>{intervalo}</h1>
+      <h1>{timer}</h1>
         {
           indiceRes >= 10 ?
            <>
@@ -68,7 +73,7 @@ const Preguntas = () => {
                     setIndiceRes(indiceRes+1);
                     setCheckRespuesta("")
                     setIndiceSeleccionado(null)
-                    setIntervalo(10)
+                    setTimer(10)
                   }
                 }}>Continuar</button>
               </div>
